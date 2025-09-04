@@ -1,15 +1,15 @@
 <script>
     import { page } from "$app/state";
-    // import CirclePlusFilledIcon from "@tabler/icons-svelte/icons/circle-plus-filled";
-    import { IconChevronRight, IconDashboard } from "@tabler/icons-svelte";
-    import MailIcon from "@tabler/icons-svelte/icons/mail";
-    import { Button } from "$lib/components/ui/button/index.js";
 
+    import { Button } from "$lib/components/ui/button/index.js";
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
     import * as Collapsible from "$lib/components/ui/collapsible/index.js";
-    let { items } = $props();
 
+    import IconChevronRight from "@tabler/icons-svelte/icons/chevron-right";
+    import IconDashboard from "@tabler/icons-svelte/icons/dashboard";
+
+    let { items } = $props();
     let openMap = $state({});
 </script>
 

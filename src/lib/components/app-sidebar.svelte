@@ -1,23 +1,21 @@
 <script>
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-
-    import {
-        IconInnerShadowTop,
-        IconDashboard,
-        IconListDetails,
-        IconServer,
-        IconBrandGithub,
-        IconGitCherryPick,
-        IconBrandDocker,
-        IconSettings,
-        IconLogs,
-        IconNotification,
-        IconGauge,
-        IconBellBolt,
-    } from "@tabler/icons-svelte";
-
     import NavMain from "./nav-main.svelte";
     import NavUser from "./nav-user.svelte";
+
+    import IconInnerShadowTop from "@tabler/icons-svelte/icons/inner-shadow-top";
+    import IconDashboard from "@tabler/icons-svelte/icons/dashboard";
+    import IconListDetails from "@tabler/icons-svelte/icons/list-details";
+    import IconServer from "@tabler/icons-svelte/icons/server";
+    import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
+    import IconGitCherryPick from "@tabler/icons-svelte/icons/git-cherry-pick";
+    import IconBrandDocker from "@tabler/icons-svelte/icons/brand-docker";
+    import IconSettings from "@tabler/icons-svelte/icons/settings";
+    import IconLogs from "@tabler/icons-svelte/icons/logs";
+    import IconNotification from "@tabler/icons-svelte/icons/notification";
+    import IconGauge from "@tabler/icons-svelte/icons/gauge";
+    import IconBellBolt from "@tabler/icons-svelte/icons/bell-bolt";
+    import IconPlanet from "@tabler/icons-svelte/icons/planet";
 
     let navItems = [
         {
@@ -92,9 +90,8 @@
                 >
                     {#snippet child({ props })}
                         <a href="/" {...props}>
-                            <IconInnerShadowTop class="!size-5" />
-                            <span class="text-base font-semibold"
-                                >aphelion.lunatine.dev</span
+                            <IconPlanet class="!size-5" />
+                            <span class="text-base font-semibold">aphelion</span
                             >
                         </a>
                     {/snippet}

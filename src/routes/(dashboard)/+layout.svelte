@@ -1,8 +1,9 @@
 <script>
     import "../../app.css";
-    // import data from "./data.js";
+
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
     import AppSidebar from "$lib/components/app-sidebar.svelte";
+
     let { children } = $props();
 </script>
 

@@ -1,13 +1,11 @@
 <script>
-    import {
-        IconBrandGithub,
-        IconGalaxy,
-        IconPlanet,
-    } from "@tabler/icons-svelte";
-
     import { Label } from "$lib/components/ui/label/index.js";
     import { Input } from "$lib/components/ui/input/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
+
+    import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
+    import IconGalaxy from "@tabler/icons-svelte/icons/galaxy";
+    import IconPlanet from "@tabler/icons-svelte/icons/planet";
 </script>
 
 <div
