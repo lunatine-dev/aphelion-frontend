@@ -23,7 +23,7 @@
                         size="lg"
                         class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                     >
-                        <Avatar.Root class="size-8 rounded-lg grayscale">
+                        <Avatar.Root class="size-8 rounded-full grayscale">
                             <Avatar.Image src={user.avatar} alt={user.name} />
                             <Avatar.Fallback class="rounded-lg"
                                 >CN</Avatar.Fallback
