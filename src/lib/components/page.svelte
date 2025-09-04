@@ -3,7 +3,7 @@
     import { Button } from "$lib/components/ui/button/index.js";
     import { Separator } from "$lib/components/ui/separator/index.js";
 
-    let { children, title, buttons = [] } = $props();
+    let { children, title, buttons = [], extraClasses } = $props();
 </script>
 
 <header
