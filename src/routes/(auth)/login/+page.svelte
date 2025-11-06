@@ -6,6 +6,7 @@
     import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
     import IconGalaxy from "@tabler/icons-svelte/icons/galaxy";
     import IconPlanet from "@tabler/icons-svelte/icons/planet";
+    import { PUBLIC_API_URL } from "$env/static/public";
 </script>
 
 <div
@@ -37,9 +38,12 @@
                                 type="email"
                                 placeholder="me@example.com"
                                 required
+                                disabled
                             />
                         </div>
-                        <Button type="submit" class="w-full">Login</Button>
+                        <Button type="submit" class="w-full" disabled
+                            >Login</Button
+                        >
                     </div>
                     <div
                         class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
@@ -51,7 +55,12 @@
                         </span>
                     </div>
                     <div class="grid gap-4 sm:grid-cols-1">
-                        <Button variant="outline" type="button" class="w-full">
+                        <Button
+                            variant="outline"
+                            type="button"
+                            class="w-full"
+                            href={`${PUBLIC_API_URL}/oauth/github`}
+                        >
                             <IconBrandGithub />
                             Continue with GitHub
                         </Button>
