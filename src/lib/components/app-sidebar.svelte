@@ -78,7 +78,7 @@
         },
     };
 
-    let { ...restProps } = $props();
+    let { user, ...restProps } = $props();
 </script>
 
 <Sidebar.Root collapsible="icon" {...restProps}>
@@ -103,6 +103,6 @@
         <NavMain items={navItems} />
     </Sidebar.Content>
     <Sidebar.Footer>
-        <NavUser user={data.user} />
+        <NavUser {user} />
     </Sidebar.Footer>
 </Sidebar.Root>

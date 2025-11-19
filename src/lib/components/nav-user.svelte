@@ -3,11 +3,9 @@
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-    import CreditCardIcon from "@tabler/icons-svelte/icons/credit-card";
     import DotsVerticalIcon from "@tabler/icons-svelte/icons/dots-vertical";
     import LogoutIcon from "@tabler/icons-svelte/icons/logout";
-    import NotificationIcon from "@tabler/icons-svelte/icons/notification";
-    import UserCircleIcon from "@tabler/icons-svelte/icons/user-circle";
+    import SettingsIcon from "@tabler/icons-svelte/icons/settings";
 
     let { user } = $props();
     const sidebar = Sidebar.useSidebar();
@@ -21,12 +19,12 @@
                     <Sidebar.MenuButton
                         {...props}
                         size="lg"
-                        class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                        class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground  grayscale-90 hover:grayscale-0 transition transition-filter data-[state=open]:grayscale-0"
                     >
-                        <Avatar.Root class="size-8 rounded-full grayscale">
+                        <Avatar.Root class="size-8 rounded-full">
                             <Avatar.Image src={user.avatar} alt={user.name} />
                             <Avatar.Fallback class="rounded-lg"
-                                >CN</Avatar.Fallback
+                                >{user.name.charAt(0)}</Avatar.Fallback
                             >
                         </Avatar.Root>
                         <div
@@ -37,7 +35,7 @@
                             <span
                                 class="text-muted-foreground truncate text-xs"
                             >
-                                {user.email}
+                                {user.login}
                             </span>
                         </div>
                         <DotsVerticalIcon class="ml-auto size-4" />
@@ -57,7 +55,7 @@
                         <Avatar.Root class="size-8 rounded-lg">
                             <Avatar.Image src={user.avatar} alt={user.name} />
                             <Avatar.Fallback class="rounded-lg"
-                                >CN</Avatar.Fallback
+                                >{user.name.charAt(0)}</Avatar.Fallback
                             >
                         </Avatar.Root>
                         <div
@@ -68,7 +66,7 @@
                             <span
                                 class="text-muted-foreground truncate text-xs"
                             >
-                                {user.email}
+                                {user.login}
                             </span>
                         </div>
                     </div>
@@ -76,22 +74,30 @@
                 <DropdownMenu.Separator />
                 <DropdownMenu.Group>
                     <DropdownMenu.Item>
-                        <UserCircleIcon />
-                        Account
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                        <CreditCardIcon />
-                        Billing
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item>
-                        <NotificationIcon />
-                        Notifications
+                        {#snippet child({ props })}
+                            <a
+                                {...props}
+                                href="/user/settings"
+                                class={`cursor-pointer ${props.class ?? ""}`}
+                            >
+                                <SettingsIcon />
+                                Settings</a
+                            >
+                        {/snippet}
                     </DropdownMenu.Item>
                 </DropdownMenu.Group>
                 <DropdownMenu.Separator />
                 <DropdownMenu.Item>
-                    <LogoutIcon />
-                    Log out
+                    {#snippet child({ props })}
+                        <a
+                            {...props}
+                            href="/user/logout"
+                            class={`cursor-pointer ${props.class ?? ""}`}
+                        >
+                            <LogoutIcon />
+                            Log out
+                        </a>
+                    {/snippet}
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>
