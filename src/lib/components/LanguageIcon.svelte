@@ -18,8 +18,8 @@
 
     let { language } = $props();
 
-    let Icon = icons[language] || Code;
-    let color = languageColors[language]?.color || "#fff";
+    let Icon = $derived(icons[language] || Code);
+    let color = $derived(languageColors[language]?.color || "#fff");
 </script>
 
 <Icon {color} size={"1.5em"} />

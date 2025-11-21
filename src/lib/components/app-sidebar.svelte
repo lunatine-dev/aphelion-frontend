@@ -1,4 +1,7 @@
 <script>
+    import { onMount } from "svelte";
+    import { send } from "$lib/utility/api";
+
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
     import NavMain from "./nav-main.svelte";
     import NavUser from "./nav-user.svelte";
@@ -16,6 +19,8 @@
     import IconGauge from "@tabler/icons-svelte/icons/gauge";
     import IconBellBolt from "@tabler/icons-svelte/icons/bell-bolt";
     import IconPlanet from "@tabler/icons-svelte/icons/planet";
+
+    let proxy = $state(false);
 
     let navItems = [
         {
@@ -79,6 +84,22 @@
     };
 
     let { user, ...restProps } = $props();
+
+    let checkDockerProxy = async () => {
+        let currentTimestamp = Date.now();
+        let { timestamp } = await send({
+            method: "GET",
+            path: "/docker/status",
+        });
+
+        let ms = timestamp - currentTimestamp;
+
+        proxy = ms;
+    };
+
+    onMount(() => {
+        checkDockerProxy();
+    });
 </script>
 
 <Sidebar.Root collapsible="icon" {...restProps}>
@@ -101,6 +122,11 @@
     </Sidebar.Header>
     <Sidebar.Content>
         <NavMain items={navItems} />
+        <div
+            class={`mt-auto text-xs text-center ${proxy ? "text-green-500" : "text-white"} opacity-75`}
+        >
+            Docker: {proxy ? `Online (${proxy}ms)` : "Offline"}
+        </div>
     </Sidebar.Content>
     <Sidebar.Footer>
         <NavUser {user} />

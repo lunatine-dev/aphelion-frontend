@@ -114,6 +114,7 @@
                                         {repo.license.spdx_id}</Badge
                                     >
                                 {/if}
+                                <Badge>{repo.language}</Badge>
                             </div>
                         </Card.Content>
                         <Card.Footer></Card.Footer>
