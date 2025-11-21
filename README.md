@@ -1,38 +1,32 @@
-# sv
+# 🌙 aphelion-frontend
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+> 🖥️ SvelteKit dashboard to manage your auto‑deploy repos with Docker
 
-## Creating a project
+![SvelteKit](https://img.shields.io/badge/SvelteKit-%23FF3E00.svg?logo=svelte&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Issues](https://img.shields.io/github/issues/lunatine-dev/aphelion-frontend)
+![Stars](https://img.shields.io/github/stars/lunatine-dev/aphelion-frontend?style=social)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## ✨ Purpose
 
-```sh
-# create a new project in the current directory
-npx sv create
+`aphelion-frontend` is the companion web UI for `aphelion`. It's designed to be the successor to my previous app `comet` which is limited to just NodeJS projects, whereas aphelion is designed to use Docker to auto-deploy for better support.
 
-# create a new project in my-app
-npx sv create my-app
-```
+From here you can:
 
-## Developing
+-   Add new repos to watch & auto-deploy using docker
+-   Edit and save environment variables
+-   View deployment logs and status
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+---
 
-```sh
-npm run dev
+## ⚙️ Technical stack
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+-   **Frontend**: [SvelteKit](https://kit.svelte.dev)
+-   **UI**: Tailwind CSS & shadcn-svelte
+-   **Backend API**: Connects to `aphelion` & `perihelion`
 
-## Building
+## 📦 Related project
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+-   **[aphelion](https://github.com/lunatine-dev/aphelion)** – Fastify webhook server to pull & restart projects on main branch updates.
+-   **perihelion** - Docker proxy to safely and easily manage Docker Containers
