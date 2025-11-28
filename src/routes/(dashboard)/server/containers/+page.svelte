@@ -6,7 +6,7 @@
     import { Button } from "$lib/components/ui/button/index.js";
 </script>
 
-<Page title="Containers">
+<Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Containers" }]}>
     <Empty.Root class="w-full">
         <Empty.Header>
             <Empty.Media variant="icon">

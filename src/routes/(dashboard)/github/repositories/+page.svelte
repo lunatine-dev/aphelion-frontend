@@ -35,7 +35,7 @@
     });
 </script>
 
-<Page title="Repositories">
+<Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Repositories" }]}>
     {#if loading}
         <Empty.Root class="w-full">
             <Empty.Header>

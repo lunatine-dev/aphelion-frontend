@@ -23,17 +23,22 @@
         {:else}
             <Breadcrumb.Root>
                 <Breadcrumb.List>
-                    {#each crumbs as crumb}
+                    {#each crumbs as crumb, index}
                         <Breadcrumb.Item>
-                            <Breadcrumb.Link href={crumb.href ?? "#"}>
-                                {crumb.title}
-                            </Breadcrumb.Link>
+                            {#if crumb.href}
+                                <Breadcrumb.Link href={crumb.href}>
+                                    {crumb.title}
+                                </Breadcrumb.Link>
+                            {:else}
+                                <Breadcrumb.Page>
+                                    {crumb.title}
+                                </Breadcrumb.Page>
+                            {/if}
                         </Breadcrumb.Item>
-                        <Breadcrumb.Separator />
+                        {#if index < crumbs.length - 1}
+                            <Breadcrumb.Separator />
+                        {/if}
                     {/each}
-                    <Breadcrumb.Item>
-                        <Breadcrumb.Page>{title ?? "Title"}</Breadcrumb.Page>
-                    </Breadcrumb.Item>
                 </Breadcrumb.List>
             </Breadcrumb.Root>
         {/if}

@@ -2,4 +2,4 @@
     import Page from "$lib/components/page.svelte";
 </script>
 
-<Page title="Settings" />
+<Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Settings" }]} />

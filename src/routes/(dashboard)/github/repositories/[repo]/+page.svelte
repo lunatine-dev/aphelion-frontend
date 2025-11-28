@@ -6,5 +6,11 @@
 
 <Page
     title={data.repo}
-    crumbs={[{ title: "Repositories", href: "/github/repositories" }]}>hi</Page
+    crumbs={[
+        { title: "Dashboard", href: "/" },
+        { title: "Repositories", href: "/github/repositories" },
+        { title: data.repo },
+    ]}
 >
+    <p></p>
+</Page>

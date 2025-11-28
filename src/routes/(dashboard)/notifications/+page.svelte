@@ -13,7 +13,7 @@
 </script>
 
 <Page
-    title="Notifications"
+    crumbs={[{ title: "Dashboard", href: "/" }, { title: "Notifications" }]}
     extraClasses="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
 >
     <div class="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6">
