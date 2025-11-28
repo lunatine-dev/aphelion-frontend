@@ -26,7 +26,7 @@
 
     const fetchRepos = async () => {
         loading = true;
-        repos = await get("/repos/github", data.accessToken);
+        repos = await get("/repos/live", data.accessToken);
         loading = false;
     };
 
