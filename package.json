@@ -21,6 +21,8 @@
         "@tanstack/table-core": "^8.21.3",
         "bits-ui": "^2.14.4",
         "clsx": "^2.1.1",
+        "prettier": "^3.7.1",
+        "prettier-plugin-svelte": "^3.4.0",
         "svelte": "^5.0.0",
         "tailwind-merge": "^3.3.1",
         "tailwind-variants": "^3.1.1",
