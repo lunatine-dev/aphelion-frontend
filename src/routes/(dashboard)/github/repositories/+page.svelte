@@ -111,7 +111,7 @@
                                         variant="secondary"
                                         class="bg-gray-600"
                                     >
-                                        {repo.license.spdx_id}</Badge
+                                        {repo.license_type}</Badge
                                     >
                                 {/if}
                             </div>

@@ -23,7 +23,9 @@
                         <Sidebar.MenuItem>
                             <Sidebar.MenuButton
                                 tooltipContent={navItem.title}
-                                isActive={page.url.pathname === navItem.url}
+                                isActive={navItem.url === "/"
+                                    ? page.url.pathname === navItem.url
+                                    : page.url.pathname.includes(navItem.url)}
                             >
                                 {#snippet child({ props })}
                                     <a href={navItem.url} {...props}>

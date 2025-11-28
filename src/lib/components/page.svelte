@@ -2,8 +2,9 @@
     import * as Sidebar from "$lib/components/ui/sidebar/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
     import { Separator } from "$lib/components/ui/separator/index.js";
+    import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
 
-    let { children, title, buttons = [], extraClasses } = $props();
+    let { children, title, buttons = [], extraClasses, crumbs = [] } = $props();
 </script>
 
 <header
@@ -15,9 +16,27 @@
             orientation="vertical"
             class="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 class="text-base font-medium">
-            {title || "Title"}
-        </h1>
+        {#if !crumbs.length}
+            <h1 class="text-base font-medium">
+                {title ?? "Title"}
+            </h1>
+        {:else}
+            <Breadcrumb.Root>
+                <Breadcrumb.List>
+                    {#each crumbs as crumb}
+                        <Breadcrumb.Item>
+                            <Breadcrumb.Link href={crumb.href ?? "#"}>
+                                {crumb.title}
+                            </Breadcrumb.Link>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Separator />
+                    {/each}
+                    <Breadcrumb.Item>
+                        <Breadcrumb.Page>{title ?? "Title"}</Breadcrumb.Page>
+                    </Breadcrumb.Item>
+                </Breadcrumb.List>
+            </Breadcrumb.Root>
+        {/if}
         <div class="ml-auto flex items-center gap-2">
             {#each buttons as button}
                 <Button
