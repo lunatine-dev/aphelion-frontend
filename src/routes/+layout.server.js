@@ -10,7 +10,7 @@ export async function load({ locals, cookies, fetch, url }) {
         });
 
         if (refreshRes.ok) {
-            const { accessToken, refreshToken } = await refreshRes.json();
+            const { accessToken, refreshToken, user } = await refreshRes.json();
             cookies.set("accessToken", accessToken, {
                 path: "/",
                 httpOnly: true,
@@ -26,7 +26,7 @@ export async function load({ locals, cookies, fetch, url }) {
                 maxAge: 2_592_000,
             });
 
-            throw redirect(307, url.pathname);
+            locals.user = user;
         }
     }
 }
