@@ -4,7 +4,15 @@
     import { Separator } from "$lib/components/ui/separator/index.js";
     import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
 
-    let { children, title, buttons = [], extraClasses, crumbs = [] } = $props();
+    let {
+        children,
+        title,
+        buttons = [],
+        extraClasses,
+        crumbs = [],
+        classOverride,
+        blank = false,
+    } = $props();
 </script>
 
 <header
@@ -61,10 +69,20 @@
     </div>
 </header>
 
-<div class="flex flex-1 flex-col">
-    <div class="@container/main flex flex-1 flex-col gap-2">
-        <div class="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-            {@render children?.()}
+{#if !blank}
+    <div class="flex flex-1 flex-col">
+        <div class="@container/main flex flex-1 flex-col gap-2">
+            <div
+                class={classOverride
+                    ? classOverride
+                    : `flex flex-col gap-4 py-4 md:gap-6 md:py-6 ${extraClasses}`}
+            >
+                {@render children?.()}
+            </div>
         </div>
     </div>
-</div>
+{:else}
+    <div class="flex flex-1 flex-col">
+        {@render children?.()}
+    </div>
+{/if}

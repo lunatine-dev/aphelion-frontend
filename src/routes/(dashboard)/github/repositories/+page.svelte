@@ -21,7 +21,7 @@
     let loading = $state(true);
     let repos = $state([]);
     let pagedRepos = $derived(
-        repos.slice((page - 1) * perPage, page * perPage)
+        repos.slice((page - 1) * perPage, page * perPage),
     );
 
     const fetchRepos = async () => {
