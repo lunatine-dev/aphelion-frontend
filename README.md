@@ -10,7 +10,7 @@
 
 ## ✨ Purpose
 
-`aphelion-frontend` is the companion web UI for `aphelion`. It's designed to be the successor to my previous app `comet` which is limited to just NodeJS projects, whereas aphelion is designed to use Docker to auto-deploy for better support.
+`aphelion-frontend` is the companion web UI for `aphelion`. It's designed to be the successor to my previous app `comet` which is limited to just Node.js projects, whereas aphelion is designed to use Docker to auto-deploy for better support.
 
 From here you can:
 
