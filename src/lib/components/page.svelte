@@ -12,6 +12,7 @@
         crumbs = [],
         classOverride,
         blank = false,
+        buttonsSnippet,
     } = $props();
 </script>
 
@@ -20,10 +21,7 @@
 >
     <div class="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <Sidebar.Trigger class="-ml-1" />
-        <Separator
-            orientation="vertical"
-            class="mx-2 data-[orientation=vertical]:h-4"
-        />
+        <Separator orientation="vertical" class="mx-2 data-[orientation=vertical]:h-4" />
         {#if !crumbs.length}
             <h1 class="text-base font-medium">
                 {title ?? "Title"}
@@ -65,6 +63,7 @@
                     {button.text}
                 </Button>
             {/each}
+            {@render buttonsSnippet?.()}
         </div>
     </div>
 </header>
@@ -72,11 +71,7 @@
 {#if !blank}
     <div class="flex flex-1 flex-col">
         <div class="@container/main flex flex-1 flex-col gap-2">
-            <div
-                class={classOverride
-                    ? classOverride
-                    : `flex flex-col gap-4 py-4 md:gap-6 md:py-6 ${extraClasses}`}
-            >
+            <div class={classOverride ? classOverride : `flex flex-col gap-4 py-4 md:gap-6 md:py-6 ${extraClasses}`}>
                 {@render children?.()}
             </div>
         </div>

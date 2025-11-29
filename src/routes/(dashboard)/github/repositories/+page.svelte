@@ -7,12 +7,14 @@
     import Page from "$lib/components/page.svelte";
     import * as Empty from "$lib/components/ui/empty/index.js";
     import { Spinner } from "$lib/components/ui/spinner/index.js";
-    import { Button } from "$lib/components/ui/button/index.js";
     import * as Card from "$lib/components/ui/card/index.js";
     import * as Pagination from "$lib/components/ui/pagination/index.js";
     import { Badge } from "$lib/components/ui/badge/index.js";
+    import * as Dialog from "$lib/components/ui/dialog/index.js";
+    import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
 
     import LanguageIcon from "$lib/components/LanguageIcon.svelte";
+    import IconPlus from "@tabler/icons-svelte/icons/plus";
 
     let page = $state(1);
     let perPage = 12;
@@ -20,9 +22,7 @@
     let { data } = $props();
     let loading = $state(true);
     let repos = $state([]);
-    let pagedRepos = $derived(
-        repos.slice((page - 1) * perPage, page * perPage),
-    );
+    let pagedRepos = $derived(repos.slice((page - 1) * perPage, page * perPage));
 
     const fetchRepos = async () => {
         loading = true;
@@ -36,6 +36,22 @@
 </script>
 
 <Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Repositories" }]}>
+    {#snippet buttonsSnippet()}
+        <Dialog.Root>
+            <Dialog.Trigger class={buttonVariants({ variant: "secondary" })}><IconPlus /> Add Repo</Dialog.Trigger>
+            <Dialog.Content class="sm:max-w-[425px]">
+                <Dialog.Header>
+                    <Dialog.Title>Edit profile</Dialog.Title>
+                    <Dialog.Description>
+                        Make changes to your profile here. Click save when you're done.
+                    </Dialog.Description>
+                </Dialog.Header>
+                <Dialog.Footer>
+                    <Button type="submit">Save changes</Button>
+                </Dialog.Footer>
+            </Dialog.Content>
+        </Dialog.Root>
+    {/snippet}
     {#if loading}
         <Empty.Root class="w-full">
             <Empty.Header>
@@ -59,58 +75,35 @@
                     >
                         <Card.Header>
                             <div class="flex gap-4">
-                                <div
-                                    class="flex-shrink-0"
-                                    style="font-size: 1.25em;"
-                                >
+                                <div class="flex-shrink-0" style="font-size: 1.25em;">
                                     <LanguageIcon language={repo.language} />
                                 </div>
                                 <div class="flex flex-col justify-center">
                                     <Card.Title>
                                         {repo.name}
                                     </Card.Title>
-                                    <Card.Description
-                                        >@{repo.owner.login}</Card.Description
-                                    >
+                                    <Card.Description>@{repo.owner.login}</Card.Description>
                                 </div>
                             </div>
                         </Card.Header>
                         <Card.Content>
                             <div class="flex gap-2">
                                 <Badge
-                                    variant={repo.private
-                                        ? "destructive"
-                                        : "secondary"}
-                                    class={!repo.private
-                                        ? "bg-green-500 text-white dark:bg-green-600"
-                                        : ""}
-                                    >{repo.private
-                                        ? "Private"
-                                        : "Public"}</Badge
+                                    variant={repo.private ? "destructive" : "secondary"}
+                                    class={!repo.private ? "bg-green-500 text-white dark:bg-green-600" : ""}
+                                    >{repo.private ? "Private" : "Public"}</Badge
                                 >
                                 {#if repo.archived}
-                                    <Badge
-                                        variant="secondary"
-                                        class="bg-gray-600">Archived</Badge
-                                    >
+                                    <Badge variant="secondary" class="bg-gray-600">Archived</Badge>
                                 {/if}
                                 {#if repo.is_template}
-                                    <Badge
-                                        variant="secondary"
-                                        class="bg-purple-600">Template</Badge
-                                    >
+                                    <Badge variant="secondary" class="bg-purple-600">Template</Badge>
                                 {/if}
                                 {#if repo.fork}
-                                    <Badge
-                                        variant="secondary"
-                                        class="bg-blue-500">Fork</Badge
-                                    >
+                                    <Badge variant="secondary" class="bg-blue-500">Fork</Badge>
                                 {/if}
                                 {#if repo.license}
-                                    <Badge
-                                        variant="secondary"
-                                        class="bg-gray-600"
-                                    >
+                                    <Badge variant="secondary" class="bg-gray-600">
                                         {repo.license_type}</Badge
                                     >
                                 {/if}
@@ -135,10 +128,7 @@
                                 </Pagination.Item>
                             {:else}
                                 <Pagination.Item>
-                                    <Pagination.Link
-                                        {page}
-                                        isActive={currentPage === page.value}
-                                    >
+                                    <Pagination.Link {page} isActive={currentPage === page.value}>
                                         {page.value}
                                     </Pagination.Link>
                                 </Pagination.Item>

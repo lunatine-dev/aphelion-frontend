@@ -40,6 +40,8 @@
         "@devicon/svelte": "^0.0.4",
         "@tabler/icons-svelte": "^3.34.1",
         "jsonwebtoken": "^9.0.2",
-        "mode-watcher": "^1.1.0"
+        "mode-watcher": "^1.1.0",
+        "pretty-bytes": "^7.1.0",
+        "svelte-highlight": "^7.9.0"
     }
 }

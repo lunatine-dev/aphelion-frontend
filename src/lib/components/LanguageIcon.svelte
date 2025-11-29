@@ -16,10 +16,13 @@
         Svelte,
     };
 
-    let { language } = $props();
+    let { language, text, size = "1.5em" } = $props();
 
     let Icon = $derived(icons[language] || Code);
     let color = $derived(languageColors[language]?.color || "#fff");
 </script>
 
-<Icon {color} size={"1.5em"} />
+<div class={text ? "flex items-center gap-2" : ""}>
+    <Icon {color} {size} />
+    <span class="text-sm" style={`color:${color};`}>{language}</span>
+</div>
