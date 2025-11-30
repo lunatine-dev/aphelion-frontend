@@ -3,7 +3,6 @@
 
     import * as Empty from "$lib/components/ui/empty/index.js";
     import { Spinner } from "$lib/components/ui/spinner/index.js";
-    import { Button } from "$lib/components/ui/button/index.js";
 </script>
 
 <Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Containers" }]}>

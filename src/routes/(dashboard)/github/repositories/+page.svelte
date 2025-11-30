@@ -5,6 +5,7 @@
     import { get, post } from "$lib/utility/api.js";
 
     import Page from "$lib/components/page.svelte";
+
     import * as Empty from "$lib/components/ui/empty/index.js";
     import { Spinner } from "$lib/components/ui/spinner/index.js";
     import * as Card from "$lib/components/ui/card/index.js";
@@ -16,10 +17,11 @@
     import LanguageIcon from "$lib/components/LanguageIcon.svelte";
     import IconPlus from "@tabler/icons-svelte/icons/plus";
 
-    let page = $state(1);
-    let perPage = 12;
+    const perPage = 12;
 
     let { data } = $props();
+
+    let page = $state(1);
     let loading = $state(true);
     let repos = $state([]);
     let pagedRepos = $derived(repos.slice((page - 1) * perPage, page * perPage));
@@ -41,13 +43,11 @@
             <Dialog.Trigger class={buttonVariants({ variant: "secondary" })}><IconPlus /> Add Repo</Dialog.Trigger>
             <Dialog.Content class="sm:max-w-[425px]">
                 <Dialog.Header>
-                    <Dialog.Title>Edit profile</Dialog.Title>
-                    <Dialog.Description>
-                        Make changes to your profile here. Click save when you're done.
-                    </Dialog.Description>
+                    <Dialog.Title>Manage Repository</Dialog.Title>
+                    <Dialog.Description>Choose a repository to manage</Dialog.Description>
                 </Dialog.Header>
                 <Dialog.Footer>
-                    <Button type="submit">Save changes</Button>
+                    <Button type="submit">Manage</Button>
                 </Dialog.Footer>
             </Dialog.Content>
         </Dialog.Root>
