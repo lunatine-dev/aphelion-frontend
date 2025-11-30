@@ -144,13 +144,14 @@
         crumbs={[
             { title: "Dashboard", href: "/" },
             { title: "Repositories", href: "/github/repositories" },
-            { title: "Edit repository" },
+            { title: loading ? "Edit repository" : repo?.name, icon: IconBrandGithub },
         ]}
     >
         <Tabs.Root value="env">
             <Tabs.List
                 class="grid w-full grid-cols-1 lg:grid-cols-3 lg:mb-5 bg-transparent px-4 lg:px-6 *:transition-colors *:hover:bg-input/30 *:hover:ring *:hover:ring-ring/25"
             >
+                <!-- TODO: Responsiveness for tab triggers -->
                 <Tabs.Trigger value="details" disabled={loading}>Details</Tabs.Trigger>
                 <Tabs.Trigger value="env" disabled={loading}>Environment variables</Tabs.Trigger>
                 <Tabs.Trigger value="logs" disabled={loading}>Logs</Tabs.Trigger>

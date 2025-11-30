@@ -36,7 +36,10 @@
                                     {crumb.title}
                                 </Breadcrumb.Link>
                             {:else}
-                                <Breadcrumb.Page>
+                                <Breadcrumb.Page class="flex items-center gap-1">
+                                    {#if crumb?.icon}
+                                        <crumb.icon class="w-4 h-4 hidden lg:block" />
+                                    {/if}
                                     {crumb.title}
                                 </Breadcrumb.Page>
                             {/if}
