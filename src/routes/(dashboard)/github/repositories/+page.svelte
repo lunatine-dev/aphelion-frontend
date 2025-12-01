@@ -93,6 +93,9 @@
                                     class={!repo.private ? "bg-green-500 text-white dark:bg-green-600" : ""}
                                     >{repo.private ? "Private" : "Public"}</Badge
                                 >
+                                {#if repo.webhook}
+                                    <Badge>Webhook</Badge>
+                                {/if}
                                 {#if repo.archived}
                                     <Badge variant="secondary" class="bg-gray-600">Archived</Badge>
                                 {/if}
