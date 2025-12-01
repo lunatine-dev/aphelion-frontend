@@ -52,12 +52,18 @@ export const send = async ({ method, path, data, token, retry = true }) => {
         error(401, "Unauthorized (token refresh failed)");
     }
 
+    const text = await res.text();
+    let respData;
+    try {
+        respData = text ? JSON.parse(text) : {};
+    } catch {
+        respData = {};
+    }
     if (res.ok || res.status === 422) {
-        const text = await res.text();
-        return text ? JSON.parse(text) : {};
+        return respData;
     }
 
-    error(res.status);
+    error(res.status, respData?.message || "Unknown error occurred");
 };
 
 export function get(path, token) {
