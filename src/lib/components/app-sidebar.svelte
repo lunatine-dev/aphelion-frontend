@@ -6,19 +6,15 @@
     import NavMain from "./nav-main.svelte";
     import NavUser from "./nav-user.svelte";
 
-    import IconInnerShadowTop from "@tabler/icons-svelte/icons/inner-shadow-top";
     import IconDashboard from "@tabler/icons-svelte/icons/dashboard";
-    import IconListDetails from "@tabler/icons-svelte/icons/list-details";
-    import IconServer from "@tabler/icons-svelte/icons/server";
-    import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
     import IconGitCherryPick from "@tabler/icons-svelte/icons/git-cherry-pick";
     import IconBrandDocker from "@tabler/icons-svelte/icons/brand-docker";
     import IconSettings from "@tabler/icons-svelte/icons/settings";
     import IconLogs from "@tabler/icons-svelte/icons/logs";
-    import IconNotification from "@tabler/icons-svelte/icons/notification";
     import IconGauge from "@tabler/icons-svelte/icons/gauge";
     import IconBellBolt from "@tabler/icons-svelte/icons/bell-bolt";
     import IconPlanet from "@tabler/icons-svelte/icons/planet";
+    import IconTrash from "@tabler/icons-svelte/icons/trash";
 
     let proxy = $state(false);
 
@@ -50,6 +46,11 @@
                     title: "Repositories",
                     url: "/github/repositories",
                     icon: IconGitCherryPick,
+                },
+                {
+                    title: "Cleanup",
+                    url: "/github/cleanup",
+                    icon: IconTrash,
                 },
             ],
         },
@@ -106,14 +107,11 @@
     <Sidebar.Header>
         <Sidebar.Menu>
             <Sidebar.MenuItem>
-                <Sidebar.MenuButton
-                    class="data-[slot=sidebar-menu-button]:!p-1.5"
-                >
+                <Sidebar.MenuButton class="data-[slot=sidebar-menu-button]:!p-1.5">
                     {#snippet child({ props })}
                         <a href="/" {...props}>
                             <IconPlanet class="!size-5" />
-                            <span class="text-base font-semibold">aphelion</span
-                            >
+                            <span class="text-base font-semibold">aphelion</span>
                         </a>
                     {/snippet}
                 </Sidebar.MenuButton>
@@ -122,9 +120,7 @@
     </Sidebar.Header>
     <Sidebar.Content>
         <NavMain items={navItems} />
-        <div
-            class={`mt-auto text-xs text-center ${proxy ? "text-green-500" : "text-white"} opacity-75`}
-        >
+        <div class={`mt-auto text-xs text-center ${proxy ? "text-green-500" : "text-white"} opacity-75`}>
             Docker: {proxy ? `Online (${proxy}ms)` : "Offline"}
         </div>
     </Sidebar.Content>

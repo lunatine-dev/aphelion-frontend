@@ -12,6 +12,7 @@
     import * as Avatar from "$lib/components/ui/avatar/index.js";
 
     import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
+    import Action from "$lib/components/repository/Action.svelte";
 
     let { loading, repo, liveRepo } = $props();
 </script>
@@ -53,7 +54,7 @@
         </Card.Root>
     </div>
     <div class="col-span-full xl:col-span-3">
-        <Card.Root class="bg-transparent">
+        <Card.Root class="bg-transparent h-full">
             <Card.Content>
                 <div class="flex text-2xl items-center gap-2 mb-2">
                     <IconBrandGithub class="h-[1em] inline-block" />
@@ -109,4 +110,45 @@
             </Card.Content>
         </Card.Root>
     </div>
+    <Action
+        type="destructive"
+        title="Remove Repository"
+        description="This will stop managing this repository. All automated tasks, webhooks, and integrations will be removed."
+        buttons={[
+            {
+                variant: "destructive",
+                text: "Remove",
+                onClick: () => {},
+            },
+        ]}
+    />
+    {#if liveRepo?.webhook}
+        <Action
+            span="3"
+            type="warning"
+            title="Remove Webhook"
+            description="Remove the webhook from this repository, this will stop GitHub from being able to communicate on new pushes to main"
+            buttons={[
+                {
+                    variant: "destructive",
+                    text: "Remove Webhook",
+                    onClick: () => {},
+                },
+            ]}
+        />
+    {:else}
+        <Action
+            span="3"
+            type="secondary"
+            title="Setup Webhook"
+            description="Setup the webhook for this repository so it can automatically pull and restart the Docker instance"
+            buttons={[
+                {
+                    variant: "secondary",
+                    text: "Setup",
+                    onClick: () => {},
+                },
+            ]}
+        />
+    {/if}
 </div>

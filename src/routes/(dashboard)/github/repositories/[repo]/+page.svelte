@@ -101,7 +101,7 @@
                 <!-- TODO: Responsiveness for tab triggers -->
                 <Tabs.Trigger value="details" disabled={loading}>Details</Tabs.Trigger>
                 <Tabs.Trigger value="env" disabled={loading}>Environment variables</Tabs.Trigger>
-                <Tabs.Trigger value="logs" disabled={loading}>Logs</Tabs.Trigger>
+                <Tabs.Trigger value="logs" disabled={loading}>Jobs</Tabs.Trigger>
             </Tabs.List>
             <hr class="mb-5" />
             <Tabs.Content value="details">

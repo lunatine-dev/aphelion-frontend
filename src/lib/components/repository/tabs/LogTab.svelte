@@ -72,7 +72,7 @@
     <Table.Root>
         <Table.Header>
             <Table.Row>
-                <Table.Head class="w-[100px]">ID</Table.Head>
+                <Table.Head class="w-[100px]">Job ID</Table.Head>
                 <Table.Head>Tags</Table.Head>
                 <Table.Head>Created at</Table.Head>
             </Table.Row>
