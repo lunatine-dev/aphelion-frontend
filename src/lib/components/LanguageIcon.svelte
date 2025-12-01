@@ -24,5 +24,7 @@
 
 <div class={text ? "flex items-center gap-2" : ""}>
     <Icon {color} {size} />
-    <span class="text-sm" style={`color:${color};`}>{language}</span>
+    {#if text}
+        <span class="text-sm" style={`color:${color};`}>{language}</span>
+    {/if}
 </div>
