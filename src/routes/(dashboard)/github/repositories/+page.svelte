@@ -40,7 +40,7 @@
 <Page crumbs={[{ title: "Dashboard", href: "/" }, { title: "Repositories" }]}>
     {#snippet buttonsSnippet()}
         <Dialog.Root>
-            <Dialog.Trigger class={buttonVariants({ variant: "secondary" })}><IconPlus /> Add Repo</Dialog.Trigger>
+            <Dialog.Trigger class={buttonVariants({ variant: "secondary" })}><IconPlus /> Manage Repo</Dialog.Trigger>
             <Dialog.Content class="sm:max-w-[425px]">
                 <Dialog.Header>
                     <Dialog.Title>Manage Repository</Dialog.Title>
