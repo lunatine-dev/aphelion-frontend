@@ -39,6 +39,7 @@
                         href={repo?.html_url ?? "#"}
                         variant="secondary"
                         class={loading ? "" : "bg-accent text-accent-foreground hover:bg-accent hover:brightness-75"}
+                        target="_blank"
                     >
                         {#if loading}
                             <Spinner /> Please wait
