@@ -14,6 +14,9 @@ importers:
       '@tabler/icons-svelte':
         specifier: ^3.34.1
         version: 3.34.1(svelte@5.38.6)
+      javascript-time-ago:
+        specifier: ^2.5.12
+        version: 2.5.12
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -759,6 +762,9 @@ packages:
   is-reference@3.0.3:
     resolution: {integrity: sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==}
 
+  javascript-time-ago@2.5.12:
+    resolution: {integrity: sha512-s8PPq2HQ3HIbSU0SjhNvTitf5VoXbQWof9q6k3gIX7F2il0ptjD5lONTDccpuKt/2U7RjbCp/TCHPK7eDwO7zQ==}
+
   jiti@2.5.1:
     resolution: {integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==}
     hasBin: true
@@ -931,6 +937,9 @@ packages:
   pretty-bytes@7.1.0:
     resolution: {integrity: sha512-nODzvTiYVRGRqAOvE84Vk5JDPyyxsVk0/fbA/bq7RqlnhksGpset09XTxbpvLTIjoaF7K8Z8DG8yHtKGTPSYRw==}
     engines: {node: '>=20'}
+
+  relative-time-format@1.1.11:
+    resolution: {integrity: sha512-TH+oV/w77hjaB9xCzoFYJ/Icmr/12+02IAoCI/YGS2UBTbjCbBjHGEBxGnVy4EJvOR1qadGzyFRI6hGaJJG93Q==}
 
   rollup@4.49.0:
     resolution: {integrity: sha512-3IVq0cGJ6H7fKXXEdVt+RcYvRCt8beYY9K1760wGQwSAHZcS9eot1zDG5axUbcp/kWRi5zKIIDX8MoKv/TzvZA==}
@@ -1773,6 +1782,10 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
 
+  javascript-time-ago@2.5.12:
+    dependencies:
+      relative-time-format: 1.1.11
+
   jiti@2.5.1: {}
 
   jsonwebtoken@9.0.2:
@@ -1908,6 +1921,8 @@ snapshots:
   prettier@3.7.1: {}
 
   pretty-bytes@7.1.0: {}
+
+  relative-time-format@1.1.11: {}
 
   rollup@4.49.0:
     dependencies:

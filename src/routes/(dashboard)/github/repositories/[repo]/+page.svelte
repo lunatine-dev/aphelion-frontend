@@ -12,6 +12,7 @@
     import IconExclamationCircle from "@tabler/icons-svelte/icons/exclamation-circle";
     import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
     import OverviewTab from "$lib/components/repository/tabs/OverviewTab.svelte";
+    import LogTab from "$lib/components/repository/tabs/LogTab.svelte";
 
     let { data } = $props();
 
@@ -95,7 +96,7 @@
     >
         <Tabs.Root value="details">
             <Tabs.List
-                class="grid w-full grid-cols-1 lg:grid-cols-3 lg:mb-5 bg-transparent px-4 lg:px-6 *:transition-colors *:hover:bg-input/30 *:hover:ring *:hover:ring-ring/25"
+                class="grid w-full grid-cols-1 lg:grid-cols-3 lg:mb-5 bg-transparent px-4 lg:px-6 *:transition-colors *:hover:bg-input/30 *:hover:ring *:hover:ring-ring/25 *:first:rounded-l-md *:last:rounded-r-md *:rounded-none"
             >
                 <!-- TODO: Responsiveness for tab triggers -->
                 <Tabs.Trigger value="details" disabled={loading}>Details</Tabs.Trigger>
@@ -109,7 +110,9 @@
             <Tabs.Content value="env">
                 <EnvironmentTab {repo} {envItems} />
             </Tabs.Content>
-            <Tabs.Content value="logs"></Tabs.Content>
+            <Tabs.Content value="logs">
+                <LogTab />
+            </Tabs.Content>
         </Tabs.Root>
     </Page>
 {:else}
