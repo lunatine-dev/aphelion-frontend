@@ -22,10 +22,12 @@
     let liveRepo = $state({});
     let repo = $state({});
     let logs = $state({});
+    let is_docker_app = $state(true);
 
     let message = $state("Internal Server Error");
     let description = $state("We could not find that repository");
 
+    const joinUrl = (base, path) => base.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
     const fetchRepo = {
         live: async () => {
             return await get(`/repos/live/${data.repo}`, data.accessToken);
@@ -34,6 +36,10 @@
             return await get(`/repos/live/${data.repo}/logs`, data.accessToken);
         },
         github: async (url) => {
+            return await get(url, data.accessToken);
+        },
+        is_docker_app: async (url) => {
+            url = joinUrl(url, "is_docker_app");
             return await get(url, data.accessToken);
         },
     };
@@ -52,9 +58,14 @@
             liveRepo = response;
 
             const url = `/repos/github/${login}/${name}`;
-            const funcs = [fetchRepo.logs, fetchRepo.github];
+            const funcs = [fetchRepo.logs, fetchRepo.github, fetchRepo.is_docker_app];
 
-            [logs, repo] = await Promise.all(funcs.map((fn) => fn(url)));
+            [logs, repo, { is_docker_app }] = await Promise.all(funcs.map((fn) => fn(url)));
+
+            if (!is_docker_app) {
+                message = "Internal Server Error";
+                description = "Could not detect Dockerfile or compose file in the repository";
+            }
 
             console.log(logs);
         } catch (e) {
@@ -85,7 +96,7 @@
     ]);
 </script>
 
-{#if found}
+{#if found && is_docker_app}
     <Page
         title={data.repo}
         crumbs={[
