@@ -3,7 +3,7 @@
     import { toast } from "svelte-sonner";
     import { goto } from "$app/navigation";
 
-    import { del } from "$lib/utility/api.js";
+    import { del, post } from "$lib/utility/api.js";
 
     import Status from "$lib/components/repository/Status.svelte";
     import LanguageIcon from "$lib/components/LanguageIcon.svelte";
@@ -168,8 +168,16 @@
                 {
                     variant: "secondary",
                     text: "Setup",
-                    onClick: () => {
-                        alert("hi");
+                    onClick: async () => {
+                        try {
+                            let resp = await post(`/repos/live/${repo?.id}/webhooks`);
+
+                            liveRepo.webhook = resp.webhook;
+
+                            toast.success(resp?.message ?? "Successfully setup webhook");
+                        } catch (err) {
+                            toast.error(err?.body?.message ?? err?.message ?? "Unknown error");
+                        }
                     },
                     disabled: !is_docker_app,
                 },
