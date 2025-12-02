@@ -62,11 +62,6 @@
 
             [logs, repo, { is_docker_app }] = await Promise.all(funcs.map((fn) => fn(url)));
 
-            if (!is_docker_app) {
-                message = "Internal Server Error";
-                description = "Could not detect Dockerfile or compose file in the repository";
-            }
-
             console.log(logs);
         } catch (e) {
             console.error("Failed to fetch repo data", e);
@@ -96,7 +91,7 @@
     ]);
 </script>
 
-{#if found && is_docker_app}
+{#if found}
     <Page
         title={data.repo}
         crumbs={[
@@ -116,7 +111,7 @@
             </Tabs.List>
             <hr class="mb-5" />
             <Tabs.Content value="details">
-                <OverviewTab {repo} {liveRepo} {loading} />
+                <OverviewTab {repo} {liveRepo} {loading} {is_docker_app} />
             </Tabs.Content>
             <Tabs.Content value="env">
                 <EnvironmentTab {repo} {envItems} />

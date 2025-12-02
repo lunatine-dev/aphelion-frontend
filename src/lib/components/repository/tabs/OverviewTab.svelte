@@ -14,7 +14,7 @@
     import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
     import Action from "$lib/components/repository/Action.svelte";
 
-    let { loading, repo, liveRepo } = $props();
+    let { loading, repo, liveRepo, is_docker_app } = $props();
 </script>
 
 <div class="grid grid-cols-1 gap-4 px-4 lg:px-6 xl:grid-cols-5 items-stretch">
@@ -106,11 +106,13 @@
                     <Status text="Webhooks Setup" status={liveRepo?.webhook} {loading} />
                     <Status text="Directory Exists" status={liveRepo?.directory_exists} {loading} />
                     <Status text="Docker Status" status={false} {loading} />
+                    <Status text="Has Dockerfile" status={is_docker_app} {loading} />
                 </div>
             </Card.Content>
         </Card.Root>
     </div>
     <Action
+        {loading}
         type="destructive"
         title="Remove Repository"
         description="This will stop managing this repository. All automated tasks, webhooks, and integrations will be removed."
@@ -127,6 +129,7 @@
     />
     {#if liveRepo?.webhook}
         <Action
+            {loading}
             span="3"
             type="warning"
             title="Remove Webhook"
@@ -144,6 +147,7 @@
         />
     {:else}
         <Action
+            {loading}
             span="3"
             type="secondary"
             title="Setup Webhook"
@@ -152,7 +156,10 @@
                 {
                     variant: "secondary",
                     text: "Setup",
-                    onClick: () => {},
+                    onClick: () => {
+                        alert("hi");
+                    },
+                    disabled: !is_docker_app,
                 },
             ]}
         />

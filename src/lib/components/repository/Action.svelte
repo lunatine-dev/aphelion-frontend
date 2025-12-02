@@ -3,7 +3,7 @@
     import * as Card from "$lib/components/ui/card/index.js";
     import Confirmation from "$lib/components/buttons/Confirmation.svelte";
 
-    let { title, description, type, buttons = [], span = "2" } = $props();
+    let { title, description, type, buttons = [], span = "2", loading } = $props();
 
     let actionBackground = type === "destructive" ? "bg-red-700/10" : "bg-background";
     let border = type === "destructive" && "border-red-700/50";
@@ -31,9 +31,11 @@
                             buttonText={button.text}
                             buttonClasses={buttonClass}
                             onConfirm={button.onClick}
+                            disabled={loading || button?.disabled || false}
                         />
                     {:else}
                         <Button
+                            disabled={loading || button?.disabled || false}
                             variant={button?.variant ?? "secondary"}
                             class={`cursor-pointer ${buttonClass}`}
                             onclick={button.onClick}>{button.text}</Button

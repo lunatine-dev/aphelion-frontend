@@ -14,11 +14,13 @@
         buttonClasses,
         onConfirm = () => {},
         onCancel = () => {},
+        disabled = false,
     } = $props();
 </script>
 
 <AlertDialog.Root>
     <AlertDialog.Trigger
+        {disabled}
         class={`cursor-pointer hover:brightness-75 ${buttonClasses} ${buttonVariants({ variant: buttonVariant })}`}
         >{buttonText}</AlertDialog.Trigger
     >
