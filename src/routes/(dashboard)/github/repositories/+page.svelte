@@ -16,11 +16,13 @@
     import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
     import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
     import * as Item from "$lib/components/ui/item/index.js";
+    import * as InputGroup from "$lib/components/ui/input-group/index.js";
 
     import LanguageIcon from "$lib/components/LanguageIcon.svelte";
     import IconPlus from "@tabler/icons-svelte/icons/plus";
     import IconLock from "@tabler/icons-svelte/icons/lock";
     import IconWorld from "@tabler/icons-svelte/icons/world";
+    import IconSearch from "@tabler/icons-svelte/icons/search";
 
     const perPage = 12;
 
@@ -33,6 +35,8 @@
     let manageDialog = $state(false);
     let repos = $state([]);
     let liveRepos = $state([]);
+    let liveRepoSearch = $state("");
+    let liveRepoSearched = $derived(liveRepos.filter((r) => r?.name.includes(liveRepoSearch)));
     let pagedRepos = $derived(repos.slice((page - 1) * perPage, page * perPage));
 
     const fetchRepos = async () => {
@@ -92,6 +96,15 @@
                     <Dialog.Title>Manage Repository</Dialog.Title>
                     <Dialog.Description>Choose a repository to manage</Dialog.Description>
                 </Dialog.Header>
+                <div class="grid w-full max-w-sm gap-6">
+                    <InputGroup.Root>
+                        <InputGroup.Input placeholder="Search..." bind:value={liveRepoSearch} />
+                        <InputGroup.Addon>
+                            <IconSearch />
+                        </InputGroup.Addon>
+                        <InputGroup.Addon align="inline-end">{liveRepoSearched?.length ?? 0} results</InputGroup.Addon>
+                    </InputGroup.Root>
+                </div>
                 <div class="grid gap-4">
                     <ScrollArea class="h-72 w-full rounded-md border">
                         {#if loadingLiveRepos || loading}
@@ -103,7 +116,7 @@
                             </div>
                         {:else}
                             <Item.Group>
-                                {#each liveRepos as repo, index}
+                                {#each liveRepoSearched as repo, index}
                                     <Item.Root>
                                         <Item.Media variant="icon">
                                             {#if repo?.private}
