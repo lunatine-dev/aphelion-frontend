@@ -119,6 +119,9 @@
                 variant: "destructive",
                 text: "Remove",
                 onClick: () => {},
+                type: "confirmation",
+                confirmationMessage:
+                    "This action is permanent, you will lose all existing environment variables and all files related to the app. ",
             },
         ]}
     />
@@ -133,6 +136,9 @@
                     variant: "destructive",
                     text: "Remove Webhook",
                     onClick: () => {},
+                    type: "confirmation",
+                    confirmationMessage:
+                        "Deleting this webhook will stop GitHub from being able to send new pushes to the app.",
                 },
             ]}
         />
