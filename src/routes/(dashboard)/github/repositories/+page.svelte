@@ -147,7 +147,7 @@
                 <Empty.Title>Fetching Repositories</Empty.Title>
             </Empty.Header>
         </Empty.Root>
-    {:else}
+    {:else if repos.length !== 0}
         <div class="flex flex-col min-h-[500px]">
             <div
                 class=" @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t lg:px-6"
@@ -230,5 +230,14 @@
                 {/snippet}
             </Pagination.Root>
         </div>
+    {:else}
+        <Empty.Root class="w-full">
+            <Empty.Header>
+                <Empty.Media variant="icon">
+                    <IconLock />
+                </Empty.Media>
+                <Empty.Title>No repositories managed</Empty.Title>
+            </Empty.Header>
+        </Empty.Root>
     {/if}
 </Page>

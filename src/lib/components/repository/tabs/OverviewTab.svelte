@@ -1,5 +1,9 @@
 <script>
     import prettyBytes from "pretty-bytes";
+    import { toast } from "svelte-sonner";
+    import { goto } from "$app/navigation";
+
+    import { del } from "$lib/utility/api.js";
 
     import Status from "$lib/components/repository/Status.svelte";
     import LanguageIcon from "$lib/components/LanguageIcon.svelte";
@@ -120,7 +124,15 @@
             {
                 variant: "destructive",
                 text: "Remove",
-                onClick: () => {},
+                onClick: async () => {
+                    try {
+                        let resp = await del(`/repos/live/${repo?.id}`);
+                        toast.success(resp?.message ?? "Successfully removed repository");
+                        goto("/github/repositories");
+                    } catch (err) {
+                        toast.error(err?.body?.message ?? err?.message ?? "Unknown error");
+                    }
+                },
                 type: "confirmation",
                 confirmationMessage:
                     "This action is permanent, you will lose all existing environment variables and all files related to the app. ",
