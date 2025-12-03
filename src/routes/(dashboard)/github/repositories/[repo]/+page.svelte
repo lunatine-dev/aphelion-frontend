@@ -128,7 +128,7 @@
                 <OverviewTab {repo} {liveRepo} {loading} {is_docker_app} {docker_state} />
             </Tabs.Content>
             <Tabs.Content value="env">
-                <EnvironmentTab {repo} {envItems} />
+                <EnvironmentTab {repo} {envItems} {env} {data} />
             </Tabs.Content>
             <Tabs.Content value="logs">
                 <LogTab />
