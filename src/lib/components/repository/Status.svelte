@@ -17,14 +17,7 @@
     <Card.Content>
         <div class="flex items-center justify-between">
             <span class="text-foreground font-medium">
-                {#if loading}
-                    <Skeleton
-                        class="inline-block h-[1em] bg-gray-600/50 mr-1 last-child:mr-0"
-                        style={`width:${width}px;`}
-                    />
-                {:else}
-                    {text}
-                {/if}
+                {text}
             </span>
 
             <div class="{color} flex h-6 w-6 items-center justify-center rounded-full">

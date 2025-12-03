@@ -18,7 +18,7 @@
     import IconBrandGithub from "@tabler/icons-svelte/icons/brand-github";
     import Action from "$lib/components/repository/Action.svelte";
 
-    let { loading, repo, liveRepo, is_docker_app } = $props();
+    let { loading, repo, liveRepo, is_docker_app, docker_state } = $props();
 </script>
 
 <div class="grid grid-cols-1 gap-4 px-4 lg:px-6 xl:grid-cols-5 items-stretch">
@@ -109,7 +109,11 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <Status text="Webhooks Setup" status={liveRepo?.webhook} {loading} />
                     <Status text="Directory Exists" status={liveRepo?.directory_exists} {loading} />
-                    <Status text="Docker Status" status={false} {loading} />
+                    <Status
+                        text="Docker Status"
+                        status={docker_state === "online"}
+                        loading={docker_state === "loading"}
+                    />
                     <Status text="Has Dockerfile" status={is_docker_app} {loading} />
                 </div>
             </Card.Content>

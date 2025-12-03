@@ -93,9 +93,7 @@
             path: "/docker/status",
         });
 
-        let ms = timestamp - currentTimestamp;
-
-        proxy = ms;
+        proxy = timestamp - currentTimestamp;
     };
 
     onMount(() => {

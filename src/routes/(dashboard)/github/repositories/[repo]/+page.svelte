@@ -24,6 +24,8 @@
     let logs = $state({});
     let is_docker_app = $state(true);
 
+    let docker_state = $state("loading");
+
     let message = $state("Internal Server Error");
     let description = $state("We could not find that repository");
 
@@ -41,6 +43,9 @@
         is_docker_app: async (url) => {
             url = joinUrl(url, "is_docker_app");
             return await get(url, data.accessToken);
+        },
+        get_docker_app: async () => {
+            return await get(`/docker/containers/${data.repo}`, data.accessToken);
         },
     };
 
@@ -68,6 +73,15 @@
             found = false;
         } finally {
             loading = false;
+        }
+
+        // No point blocking main rendering, loading this in background as docker can take a few seconds
+        try {
+            const dockerContainer = await fetchRepo.get_docker_app();
+
+            docker_state = dockerContainer?.status ?? "offline";
+        } catch (e) {
+            console.error(e);
         }
     };
 
@@ -111,7 +125,7 @@
             </Tabs.List>
             <hr class="mb-5" />
             <Tabs.Content value="details">
-                <OverviewTab {repo} {liveRepo} {loading} {is_docker_app} />
+                <OverviewTab {repo} {liveRepo} {loading} {is_docker_app} {docker_state} />
             </Tabs.Content>
             <Tabs.Content value="env">
                 <EnvironmentTab {repo} {envItems} />
