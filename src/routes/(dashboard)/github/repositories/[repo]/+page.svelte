@@ -129,7 +129,7 @@
                 <EnvironmentTab {repo} {envItems} {env} {data} />
             </Tabs.Content>
             <Tabs.Content value="logs">
-                <LogTab {logs} />
+                <LogTab logs={[...(logs?.docker ?? []), ...(logs?.clone ?? [])]} />
             </Tabs.Content>
         </Tabs.Root>
     </Page>
