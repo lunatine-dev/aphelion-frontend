@@ -39,7 +39,7 @@
                         {/if}
                     </Table.Cell>
                     <Table.Cell class="text-muted-foreground group-hover:text-white"
-                        >{timeAgo.format(item.createdAt)}</Table.Cell
+                        >{timeAgo.format(new Date(item.createdAt).getTime())}</Table.Cell
                     >
                     <Table.Cell class="w-[50px]">
                         {#if item?.open}
