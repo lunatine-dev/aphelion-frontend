@@ -30,3 +30,11 @@ From here you can:
 
 -   **[aphelion](https://github.com/lunatine-dev/aphelion)** – Fastify webhook server to pull & restart projects on main branch updates.
 -   **perihelion** - Docker proxy to safely and easily manage Docker Containers
+
+## 🚀 Future Improvements
+
+This project has been a great space to explore new patterns and broaden my understanding of deployment workflows.  
+Here are some improvements I’m aiming for in future iterations:
+
+- More robust GitHub integration, exploring alternatives to webhooks for greater reliability and flexibility
+- Multi-user support, with improved OAuth integration even for single-user setups
