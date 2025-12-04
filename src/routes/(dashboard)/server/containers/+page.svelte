@@ -8,6 +8,7 @@
     import { Spinner } from "$lib/components/ui/spinner/index.js";
     import * as Card from "$lib/components/ui/card/index.js";
     import { Badge } from "$lib/components/ui/badge/index.js";
+    import { Button } from "$lib/components/ui/button/index.js";
 
     import IconExclamationCircle from "@tabler/icons-svelte/icons/exclamation-circle";
 
@@ -27,6 +28,10 @@
             loading = false;
         }
     };
+
+    const restart = () => {};
+    const start = () => {};
+    const stop = () => {};
 
     onMount(() => {
         getContainers();
@@ -84,6 +89,16 @@
                             <Badge variant="secondary" class="bg-gray-600">{container.details}</Badge>
                         </div>
                     </Card.Content>
+                    <Card.Footer class="border-t">
+                        <div class="flex gap-2">
+                            {#if container.status === "online"}
+                                <Button variant="destructive" class="cursor-pointer">Stop</Button>
+                            {:else}
+                                <Button variant="secondary" class="bg-green-600 cursor-pointer">Start</Button>
+                            {/if}
+                            <Button class="cursor-pointer">Restart</Button>
+                        </div>
+                    </Card.Footer>
                 </Card.Root>
             {/each}
         </div>

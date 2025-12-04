@@ -9,63 +9,9 @@
     import IconChevronDown from "@tabler/icons-svelte/icons/chevron-down";
     import IconChevronUp from "@tabler/icons-svelte/icons/chevron-up";
 
+    let { logs } = $props();
     TimeAgo.addDefaultLocale(en);
     const timeAgo = new TimeAgo("en-US");
-
-    let items = $state([
-        {
-            _id: 42549238593245,
-            repoId: 123456789,
-            status: "success",
-            type: "clone",
-            logs: [
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-                {
-                    tag: "test",
-                    text: "Some stuff...",
-                    timestamp: Date.now(),
-                },
-            ],
-            createdAt: Date.now(),
-        },
-        {
-            _id: 42549238593245,
-            repoId: 123456789,
-            status: "error",
-            type: "docker",
-            logs: [],
-            createdAt: Date.now(),
-        },
-    ]);
 </script>
 
 <div class="px-4">
@@ -78,7 +24,7 @@
             </Table.Row>
         </Table.Header>
         <Table.Body>
-            {#each items as item, index}
+            {#each logs as item, index}
                 <Table.Row class="cursor-pointer group" onclick={() => (item.open = !item?.open ?? true)}>
                     <Table.Cell
                         class="font-medium align-top"

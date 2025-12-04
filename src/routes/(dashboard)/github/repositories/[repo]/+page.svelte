@@ -66,8 +66,6 @@
             const funcs = [fetchRepo.logs, fetchRepo.github, fetchRepo.is_docker_app];
 
             [logs, repo, { is_docker_app }] = await Promise.all(funcs.map((fn) => fn(url)));
-
-            console.log(logs);
         } catch (e) {
             console.error("Failed to fetch repo data", e);
             found = false;
@@ -131,7 +129,7 @@
                 <EnvironmentTab {repo} {envItems} {env} {data} />
             </Tabs.Content>
             <Tabs.Content value="logs">
-                <LogTab />
+                <LogTab {logs} />
             </Tabs.Content>
         </Tabs.Root>
     </Page>
